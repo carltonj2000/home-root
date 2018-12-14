@@ -1,0 +1,18 @@
+version: "3"
+services:
+  home-root:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.home
+    ports:
+      - "80:80"
+    volumes:
+      - /mnt/home-root:/etc/nginx/html
+  do-root:
+    build:
+      context: ./do-root
+      dockerfile: ./Dockerfile.home
+    ports:
+      - "8081:80"
+    volumes:
+      - /mnt/home-root/do-root:/etc/nginx/html
